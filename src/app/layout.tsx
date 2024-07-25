@@ -1,4 +1,5 @@
 import '../app/globals.css';
+import '../../fontAwesomeConfig';
 
 export const metadata = {
   title: 'Oitava Rosado',
