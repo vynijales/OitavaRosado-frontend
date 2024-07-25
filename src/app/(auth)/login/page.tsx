@@ -60,13 +60,14 @@ export default function Login() {
                 className="w-full flex flex-col justify-center items-center gap-4"
             >
                 <button
-                    id="login-button"
+                    id="submit-button"
+                    type="submit"
                     className="w-full min-h-16 bg-primary hover:opacity-90 text-white text-2xl font-bold px-8 py-2 rounded mt-4"
                 >
                     Entrar
                 </button>
                 <Link
-                    href=""
+                    href="/forgot-password"
                     className=" text-primary hover:opacity-90 text-xl mt-2"
                 >
                     Esqueceu a senha?

@@ -1,7 +1,6 @@
 "use client"
 
 import Input from "@/components/form/Input";
-import Link from "next/link";
 
 export default function Register() {
     return (
@@ -58,17 +57,19 @@ export default function Register() {
                 className="w-full flex flex-col justify-center items-center gap-4"
             >
                 <button
-                    id="login-button"
+                    id="submit-button"
+                    type="submit"
                     className="w-full min-h-16 bg-primary hover:opacity-90 text-white text-2xl font-bold px-8 py-2 rounded mt-4"
                 >
                     Finalizar cadastro
                 </button>
-                <Link
-                    href=""
+                <button
+                    id="cancel-button"
+                    onClick={() => history.back()}
                     className=" text-red-600 hover:opacity-90 text-xl mt-2"
                 >
                     Cancelar
-                </Link>
+                </button>
             </div>
 
         </form>)
