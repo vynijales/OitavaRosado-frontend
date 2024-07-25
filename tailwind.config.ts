@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#0F8982',     // cor primária personalizada
-        secondary: '#16A34A',   // cor verde personalizada
+        secondary: '#089B93',   // cor secundária personalizada
         accent: '#535E63',      // cor cinza personalizada
       },
       backgroundImage: {
