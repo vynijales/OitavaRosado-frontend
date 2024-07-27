@@ -3,6 +3,7 @@ import DataTable from "@/components/ui/DataTable";
 import { Doctor } from "@/types/doctor";
 
 import { columns } from "./DataTableDoctors";
+import { Button } from "@/components/ui/button";
 
 
 // This is some fake data to show in the table.
@@ -67,7 +68,16 @@ export default function Page() {
         <>
             <Breadcrumbs items={items} />
             <div>
-                <h1 className="text-3xl text-white">Médicos</h1>
+                <div className="flex justify-between items-center">
+                    <div
+                        id="text-header"
+                        className="text-white py-4">
+                        <h1 className="text-3xl font-semibold">Médicos</h1>
+                        <h2 className="text-slate-200">Gerencie com eficiência e segurança os dados do sistema</h2>
+                    </div>
+                    <Button className="bg-white hover:bg-white font-bold text-primary hover:text-primary hover:opacity-90">Novo Médico</Button>
+
+                </div>
                 <DataTable columns={columns} data={data} />
             </div>
         </>

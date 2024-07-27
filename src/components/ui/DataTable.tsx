@@ -133,10 +133,11 @@ export default function DataTable<TData, TValue>({
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, index) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className={index % 2 === 0 ? "bg-[#FFF]" : "bg-[#F9FAFB]"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
