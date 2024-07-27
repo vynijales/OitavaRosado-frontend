@@ -1,5 +1,13 @@
 import '../app/globals.css';
 import '../../fontAwesomeConfig';
+import { Inter as FontSans } from "next/font/google"
+
+import { cn } from "@/lib/utils"
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata = {
   title: 'Oitava Rosado',
@@ -13,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body>{children}</body>
+      <body className={cn("font-sans antialiased", fontSans.variable)}>{children}</body>
     </html>
   )
 }
