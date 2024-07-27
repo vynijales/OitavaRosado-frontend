@@ -8,13 +8,8 @@ export default function MainLayout({
 
     return (
         <>
-            <div
-                id="background-md"
-                className="absolute top-0 left-0 w-full h-2/5 bg-primary"
-            >
-            </div>
-            <div
-            className="z-0">
+            <div className="absolute top-0 left-0 w-full h-2/5 bg-primary"></div>
+            <div className="w-full xl:w-4/5 z-0 flex flex-col self-center pt-6">
                 {children}
             </div>
         </>
