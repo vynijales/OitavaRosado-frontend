@@ -1,7 +1,7 @@
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
-import DataTable from "@/components/DataTable";
+import DataTable from "@/components/ui/DataTable";
 
-import { Payment, columns } from "./columns"
+import { Payment, columns } from "../../../../components/ui/Columns"
 
 
 // This is some fake data to show in the table.
@@ -16,10 +16,15 @@ const data: Payment[] = [
         id: "2",
         amount: 200,
         status: "processing",
-        email: "example@example.com",
+        email: "test@test.com",
+    },
+    {
+        id: "3",
+        amount: 300,
+        status: "success",
+        email: "nothing at all",
     },
 ];
-
 
 export default function Page() {
     const items = [
