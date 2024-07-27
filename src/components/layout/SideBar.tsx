@@ -3,7 +3,7 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStethoscope, faUser, faPerson, faHome, faGear, faRightFromBracket, faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faStethoscope, faUser, faPerson, faHome, faGear, faRightFromBracket, faCircleChevronLeft, faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard } from '@fortawesome/free-regular-svg-icons';
 import NavLink from '../buttons/NavLink';
 import Logo2 from "/public/logo2.png";
@@ -40,7 +40,7 @@ export default function SideBar() {
             </div>
 
             <FontAwesomeIcon
-                icon={faCircleChevronLeft}
+                icon={expanded ? faCircleChevronLeft : faCircleChevronRight}
                 className={`absolute top-1/2 ${expanded ? "left-[23rem]" : "left-[4rem]"} text-primary text-3xl hover:scale-105 hover:opacity-90 cursor-pointer transition-all duration-300`}
                 onClick={toggleExpanded}
             />
