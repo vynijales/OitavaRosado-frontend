@@ -1,28 +1,59 @@
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import DataTable from "@/components/ui/DataTable";
+import { Doctor } from "@/types/doctor";
 
-import { Payment, columns } from "../../../../components/ui/Columns"
+import { columns } from "./DataTableDoctors";
 
 
 // This is some fake data to show in the table.
-const data: Payment[] = [
+const data: Doctor[] = [
     {
         id: "1",
-        amount: 100,
-        status: "pending",
-        email: "example@example.com",
+        name: "Dr. João",
+        email: "",
+        council: "CRM",
+        council_uf: "RN",
+        council_number: "123456",
+        cbo: "123456",
+        cpf: "123456",
+        address: "Rua 1",
+        neighborhood: "Bairro 1",
+        city: "Cidade 1",
+        uf: "RN",
+        cep: "123456",
+        phone: "123456",
     },
     {
         id: "2",
-        amount: 200,
-        status: "processing",
-        email: "test@test.com",
+        name: "Dr. Maria",
+        email: "",
+        council: "CRM",
+        council_uf: "RN",
+        council_number: "123456",
+        cbo: "123456",
+        cpf: "123456",
+        address: "Rua 2",
+        neighborhood: "Bairro 2",
+        city: "Cidade 2",
+        uf: "RN",
+        cep: "123456",
+        phone: "123456",
     },
     {
         id: "3",
-        amount: 300,
-        status: "success",
-        email: "nothing at all",
+        name: "Dr. José",
+        email: "",
+        council: "CRM",
+        council_uf: "RN",
+        council_number: "123456",
+        cbo: "123456",
+        cpf: "123456",
+        address: "Rua 3",
+        neighborhood: "Bairro 3",
+        city: "Cidade 3",
+        uf: "RN",
+        cep: "123456",
+        phone: "123456",
     },
 ];
 
