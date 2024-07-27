@@ -1,9 +1,9 @@
 export default function Page() {
     return (
         <>
-            <main>
+            <div>
                 <h1>Doctors</h1>
-            </main>
+            </div>
         </>
     );
 }

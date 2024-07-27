@@ -13,7 +13,7 @@ export default function AuthLayout({
     children: React.ReactNode
 }) {
     return (
-        <main className="w-full h-screen flex items-center justify-center">
+        <div className="w-full h-screen flex items-center justify-center">
 
             <div
                 id="container"
@@ -39,6 +39,6 @@ export default function AuthLayout({
                 </section>
 
             </div>
-        </main>
+        </div>
     )
 }

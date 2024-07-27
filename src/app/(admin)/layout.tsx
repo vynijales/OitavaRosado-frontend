@@ -1,20 +1,24 @@
 import Header from "@/components/layout/Header";
 import SideBar from "@/components/layout/SideBar";
+import Footer from "@/components/layout/Footer";
 
 export default function AdminLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    
-    return (
-      <>
-      <Header/>
-      <SideBar/>
+  children,
+}: {
+  children: React.ReactNode
+}) {
 
-        <main>
-            {children}
-        </main>
-      </>
-    )
-  }
+  return (
+    <>
+      <Header />
+      <SideBar />
+      <main
+        id="container"
+        className="min-h-[calc(100vh-3rem)] flex flex-col bg-gray-100 p-20"
+      >
+        {children}
+      </main>
+      <Footer></Footer>
+    </>
+  )
+}
