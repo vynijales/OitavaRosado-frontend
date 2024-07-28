@@ -1,12 +1,11 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { LabeledInput } from "@/components/widgets/LabeledInput";
 import { LabeledSelect } from "@/components/widgets/LabeledSelect";
 import { LabeledTextArea } from "@/components/widgets/LabeledTextArea";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { Link } from "lucide-react";
 
 export default function Page() {
@@ -42,6 +41,7 @@ export default function Page() {
                     >
                         <LabeledInput
                             name="nome"
+                            label="Nome completo"
                             type="text"
                             placeholder="Informe o nome do paciente"
                         />

@@ -21,7 +21,7 @@ interface LabeledSelectProps {
 
 export function LabeledSelect({ label, name, options, value, placeholder, className, onChange }: LabeledSelectProps) {
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
-    const [selectedValue, setSelectedValue] = useState(value || options[0]?.value);
+    const [selectedValue, setSelectedValue] = useState(value || "");
 
     useEffect(() => {
         if (value) {
@@ -38,12 +38,12 @@ export function LabeledSelect({ label, name, options, value, placeholder, classN
 
     return (
         <div className={`relative ${className}`}>
-            <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs bg-white">
+            <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs font-bold bg-white">
                 {label ? label : nameCapitalized}
             </Label>
             <Select value={selectedValue} onValueChange={handleChange}>
                 <SelectTrigger className="w-full">
-                    <SelectValue />
+                    <SelectValue placeholder={selectedValue ? undefined : placeholder || "Selecione uma opção"} />
                 </SelectTrigger>
                 <SelectContent>
                     {options.map((option, index) => (

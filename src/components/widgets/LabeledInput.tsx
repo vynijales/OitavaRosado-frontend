@@ -15,7 +15,7 @@ export function LabeledInput({ label, name, type, placeholder, className, value,
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
     return (
         <div className={`relative ${className}`}>
-            <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs bg-white">
+            <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs font-bold bg-white">
                 { label ? label : nameCapitalized }
             </Label>
             <Input
