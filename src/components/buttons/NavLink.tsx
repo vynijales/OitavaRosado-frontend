@@ -19,8 +19,12 @@ export default function NavLink({ path, icon, text, currentPath, expanded }: Nav
                 ${expanded ? "justify-start" : "justify-center"} 
             `}
         >
-            <FontAwesomeIcon icon={icon} className="text-primary text-xl" />
-            <span className={`${expanded ? "" : "hidden"} text-lg`}>{text}</span>
+            <FontAwesomeIcon icon={icon} className={`text-xl 
+                ${currentPath === path ? 'text-primary' : 'text-slate-400'}`} />
+            <span className={`text-lg
+                ${expanded ? "" : "hidden"}
+                ${currentPath == path ? "text-primary" : ''
+                }`}>{text}</span>
         </a>
     );
 };
