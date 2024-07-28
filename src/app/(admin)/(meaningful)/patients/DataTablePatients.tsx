@@ -55,12 +55,6 @@ export const columns = [
         ),
     },
     {
-        accessorKey: "clinic",
-        header: ({ column }: { column: any }) => (
-            <DataTableColumnHeader column={column} title="Clínica" />
-        ),
-    },
-    {
         id: "actions",
         header: "Actions",
         cell: ({ row }: { row: any }) => {
