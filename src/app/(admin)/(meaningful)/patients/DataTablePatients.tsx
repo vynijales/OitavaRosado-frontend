@@ -43,7 +43,7 @@ export const columns = [
         ),
     },
     {
-        accessorKey: "nascimento",
+        accessorKey: "data_nascimento",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Nascimento" />
         ),
