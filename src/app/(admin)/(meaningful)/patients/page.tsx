@@ -3,12 +3,12 @@ import DataTable from "@/components/ui/DataTable";
 
 import { columns } from "./DataTablePatients";
 import { Button } from "@/components/ui/button";
-import { Patient } from "@/types/patient";
+import { Paciente } from "@/types/paciente";
 import { fakeData } from "./fakeData";
 
 
 // This is some fake data to show in the table.
-const data: Patient[] = fakeData;
+const data: Paciente[] = fakeData;
 
 export default function Page() {
     const items = [

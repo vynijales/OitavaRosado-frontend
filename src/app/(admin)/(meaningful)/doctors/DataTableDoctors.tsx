@@ -5,13 +5,13 @@ import { ActionsCell } from "@/components/ui/ActionsCell"
 
 export const columns = [
     {
-        accessorKey: "name",
+        accessorKey: "nome",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Nome" />
         ),
         cell: ({ row }: { row: any }) => {
-            const name = row.getValue("name")
-            return <div className="w-80 font-semibold">{name}</div>
+            const name = row.getValue("nome")
+            return <div className="w-60 font-semibold">{name}</div>
         },
     },
     {
@@ -25,13 +25,19 @@ export const columns = [
         },
     },
     {
-        accessorKey: "council",
+        accessorKey: "conselho_medico",
         header: ({ column }: { column: any }) => (
-            <DataTableColumnHeader column={column} title="Conselho" />
+            <DataTableColumnHeader column={column} title="Conselho Médico" />
         ),
     },
     {
-        accessorKey: "council_number",
+        accessorKey: "uf_conselho",
+        header: ({ column }: { column: any }) => (
+            <DataTableColumnHeader column={column} title="UF" />
+        ),
+    },
+    {
+        accessorKey: "num_conselho",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Nº Conselho" />
         ),
@@ -55,7 +61,7 @@ export const columns = [
         ),
     },
     {
-        accessorKey: "clinic",
+        accessorKey: "clinica",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Clínica" />
         ),

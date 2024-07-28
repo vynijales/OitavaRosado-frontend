@@ -1,6 +1,6 @@
-import { Patient } from "@/types/patient";
+import { Paciente } from "@/types/paciente";
 
-export const fakeData: Patient[] = [
+export const fakeData: Paciente[] = [
     {
         id: "1",
         nome: "Matheus Vynicius Silva Jales",

@@ -7,7 +7,7 @@ export const columns = [
     {
         accessorKey: "id",
         header: ({ column }: { column: any }) => (
-            <DataTableColumnHeader column={column} title="ID Médico" />
+            <DataTableColumnHeader column={column} title="ID" />
         ),
         cell: ({ row }: { row: any }) => {
             const id = row.getValue("id")
