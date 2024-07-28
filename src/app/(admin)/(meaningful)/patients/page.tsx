@@ -5,6 +5,7 @@ import { columns } from "./DataTablePatients";
 import { Button } from "@/components/ui/button";
 import { Paciente } from "@/types/paciente";
 import { fakeData } from "./fakeData";
+import Link from "next/link";
 
 
 // This is some fake data to show in the table.
@@ -28,7 +29,11 @@ export default function Page() {
                         <h2 className="text-slate-200">Gerencie com eficiência e segurança os dados do sistema</h2>
                     </div>
                     <div className="flex gap-4">
-                    <Button className="bg-white hover:bg-white font-bold text-primary hover:text-primary hover:opacity-90">Novo Paciente</Button>
+                        <Link
+                            href="/patients/add"
+                            className="bg-white hover:bg-white font-bold text-primary hover:opacity-90 border rounded-md p-2">
+                            Novo Paciente
+                        </Link>
                     </div>
 
                 </div>

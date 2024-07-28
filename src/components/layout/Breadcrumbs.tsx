@@ -12,11 +12,11 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
     <div id="breadcrumbs" className="w-full h-4 flex justify-start items-center gap-4 py-4">
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          <Link
+          <a
             href={item.link}
             className={`text-sm text-white ${index === items.length - 1 ? 'underline' : ''}`}>
             {item.text}
-          </Link>
+          </a>
           {index < items.length - 1 && (
             <FontAwesomeIcon icon={faChevronRight} className="text-sm text-white" />
           )}
