@@ -37,7 +37,7 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Informações Gerais</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
                             name="nome"
@@ -90,7 +90,8 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Endereço</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"                    >
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
+                    >
                         <LabeledInput
                             name="lagradouro"
                             label="Logradouro"
@@ -135,7 +136,7 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Contato</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
                             name="telefone"

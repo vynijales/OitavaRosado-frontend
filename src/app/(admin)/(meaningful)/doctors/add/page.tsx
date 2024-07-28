@@ -39,7 +39,7 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Informações Gerais</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
                             name="nome"
@@ -98,7 +98,7 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Endereço</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
                             name="logradouro"
@@ -108,13 +108,11 @@ export default function Page() {
 
                         <LabeledInput
                             name="num_casa"
+                            label="N° da residência"
                             placeholder="Informe o número da residência do médico"
                             type="text"
                         />
-                    </div>
-                    <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
-                    >
+                        
                         <LabeledInput
                             name="bairro"
                             type="text"
@@ -148,7 +146,7 @@ export default function Page() {
                     <h3 className="w-full font-bold text-primary">Contato</h3>
 
                     <div
-                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-4"
+                        className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
                             name="telefone"
@@ -178,7 +176,9 @@ export default function Page() {
                     </Button>
                     <Button
                         type="submit"
-                        className="bg-primary text-white"
+                        className="w-full xl:w-auto xl:px-12"
+                        variant={"save"}
+                        onClick={() => alert("Paciente criado com sucesso!")}
                     >
                         Salvar
                     </Button>
