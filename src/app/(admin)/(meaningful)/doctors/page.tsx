@@ -75,7 +75,10 @@ export default function Page() {
                         <h1 className="text-3xl font-semibold">Médicos</h1>
                         <h2 className="text-slate-200">Gerencie com eficiência e segurança os dados do sistema</h2>
                     </div>
-                    <Button className="bg-white hover:bg-white font-bold text-primary hover:text-primary hover:opacity-90">Novo Médico</Button>
+                    <div className="flex gap-4">
+                    <Button className="bg-white hover:bg-white font-bold text-primary hover:text-primary hover:opacity-90">Novo Médico Solicitante</Button>
+                    <Button className="bg-white hover:bg-white font-bold text-primary hover:text-primary hover:opacity-90">Novo Médico Executante</Button>
+                    </div>
 
                 </div>
                 <DataTable columns={columns} data={data} />
