@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header
       id="header-bar"
-      className="w-full h-20 fixed z-20 flex justify-end items-center bg-secondary text-white-100 divide-x divide-primary shadow-lg"
+      className="w-[100vw] h-20 fixed z-20 flex justify-end items-center bg-secondary text-white-100 divide-x divide-primary shadow-lg"
     >
 
       <button>

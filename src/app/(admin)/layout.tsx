@@ -14,7 +14,7 @@ export default function AdminLayout({
       <SideBar />
       <main
         id="container"
-        className="min-h-[calc(100vh-3rem)] flex flex-col bg-gray-100 py-20 pl-20"
+        className="w-full min-h-[calc(100vh-3rem)] flex flex-col bg-gray-100 py-20 pl-20"
       >
         {children}
       </main>
