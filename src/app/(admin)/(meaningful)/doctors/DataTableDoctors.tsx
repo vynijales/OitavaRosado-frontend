@@ -1,7 +1,8 @@
 "use client"
 
+import { MedicoDAO } from "@/api/MedicoDAO"
 import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
-import { ActionsCell } from "@/components/ui/ActionsCell"
+import ActionsCell from "@/components/widgets/DeleteAlert"
 
 export const columns = [
     {
@@ -70,8 +71,11 @@ export const columns = [
         id: "actions",
         header: "Actions",
         cell: ({ row }: { row: any }) => {
-            const id = row.getValue("id")
-            return <ActionsCell row={row} />;
+            const id = row.getValue("id");
+            return <ActionsCell row={row} onDelete={() => {
+                MedicoDAO.delete(row.getValue("id"));
+                window.location.reload();
+            }} />;
         },
     },
 ]
