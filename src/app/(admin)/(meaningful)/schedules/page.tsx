@@ -1,21 +1,21 @@
+"use client"
+
+import { AgendamentoDAO } from "@/api/AgendamentoDAO";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import DataTable from "@/components/ui/DataTable";
 
 import { columns } from "./DataTableSchedules";
 import { Button } from "@/components/ui/button";
-import { fakeData } from "./fakeData";
-import { Agendamentos } from "@/types/agendamento";
+import { Agendamento } from "@/types/agendamento";
 import Link  from "next/link";
-
-
-// This is some fake data to show in the table.
-const data: Agendamentos[] = fakeData;
 
 export default function Page() {
     const items = [
         { text: "Home", link: "/home" },
         { text: "Agendamentos médicos", link: "/schedules" },
     ];
+
+    const agendamentos: Agendamento[] = AgendamentoDAO.getAll();
 
     return (
         <>
@@ -37,7 +37,7 @@ export default function Page() {
                     </div>
 
                 </div>
-                <DataTable columns={columns} data={data} />
+                <DataTable columns={columns} data={agendamentos} />
             </div>
         </>
     );

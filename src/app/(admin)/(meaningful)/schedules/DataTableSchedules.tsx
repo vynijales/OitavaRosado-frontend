@@ -14,7 +14,7 @@ export const columns = [
             const nome = medico?.nome
             const id = medico?.id || ""
 
-            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
+            return <div className="font-semibold">{nome} - {String(id).padStart(4, "0")}</div>
         },
     },
     {
@@ -27,7 +27,7 @@ export const columns = [
             const nome = paciente?.nome
             const id = paciente?.id || ""
 
-            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
+            return <div className="font-semibold">{nome} - {String(id).padStart(4, "0")}</div>
         }
     },
     {
@@ -36,10 +36,21 @@ export const columns = [
             <DataTableColumnHeader column={column} title="Data e hora" />
         ),
         cell: ({ row }: { row: any }) => {
-            const data = row.original.data;
-            const hora = row.original.hora;
+            const data = row.original.dataConsulta;
+            const hora = row.original.horaConsulta;
             return <div>{data} - {hora}</div>;
         },
+        sortingFn: (rowA: any, rowB: any) => {
+            const dateA = new Date(`${rowA.original.dataConsulta}T${rowA.original.horaConsulta}`);
+            const dateB = new Date(`${rowB.original.dataConsulta}T${rowB.original.horaConsulta}`);
+            return dateA.getTime() - dateB.getTime();
+        }
+    },
+    {
+        accessorKey: "localConsulta",
+        header: ({ column }: { column: any }) => (
+            <DataTableColumnHeader column={column} title="Local" />
+        ),
     },
     {
         accessorKey: "observacoes",

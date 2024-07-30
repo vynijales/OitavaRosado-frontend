@@ -1,7 +1,7 @@
 import { Medico } from "./medico"
 import { Paciente } from "./paciente"
 
-export type Agendamentos = {
+export type Agendamento = {
     id?: string | null
     medico?: Medico | null
     paciente?: Paciente | null
@@ -12,7 +12,7 @@ export type Agendamentos = {
     observacoes?: string | null
 }
 
-export type AgendamentosIn = {
+export type AgendamentoIn = {
     medico?: Medico | null
     paciente?: Paciente | null
     motivo?: string | null
