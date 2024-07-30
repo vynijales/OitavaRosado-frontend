@@ -1,3 +1,6 @@
+"use client"
+
+import { MedicoDAO } from "@/api/MedicoDAO";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import DataTable from "@/components/ui/DataTable";
 import { Button } from "@/components/ui/button";
@@ -5,10 +8,6 @@ import { Medico } from "@/types/medico";
 import Link from "next/link";
 
 import { columns } from "./DataTableDoctors";
-import { fakeData } from "./fakeData";
-
-// This is some fake data to show in the table.
-const data: Medico[] = fakeData;
 
 export default function Page() {
     const items = [
@@ -16,6 +15,8 @@ export default function Page() {
         { text: "Médicos Solicitantes ou Coordenadores", link: "/doctors" },
     ];
 
+    const data: Medico[] = MedicoDAO.getAll();
+    
     return (
         <>
             <Breadcrumbs items={items} />

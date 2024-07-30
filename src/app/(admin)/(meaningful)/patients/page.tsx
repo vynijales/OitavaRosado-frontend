@@ -1,21 +1,22 @@
+"use client"
+
+import { useEffect, useState } from "react";
+import { PacienteDAO } from "@/api/PacienteDAO";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import DataTable from "@/components/ui/DataTable";
 
 import { columns } from "./DataTablePatients";
 import { Button } from "@/components/ui/button";
 import { Paciente } from "@/types/paciente";
-import { fakeData } from "./fakeData";
 import Link from "next/link";
-
-
-// This is some fake data to show in the table.
-const data: Paciente[] = fakeData;
 
 export default function Page() {
     const items = [
         { text: "Home", link: "/home" },
         { text: "Pacientes", link: "/patients" },
     ];
+
+    const pacientes: Paciente[] = PacienteDAO.getAll();
 
     return (
         <>
@@ -37,7 +38,7 @@ export default function Page() {
                     </div>
 
                 </div>
-                <DataTable columns={columns} data={data} />
+                <DataTable columns={columns} data={pacientes} />
             </div>
         </>
     );
