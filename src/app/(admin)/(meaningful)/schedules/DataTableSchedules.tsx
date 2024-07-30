@@ -14,7 +14,7 @@ export const columns = [
             const nome = medico?.nome
             const id = medico?.id || ""
 
-            return <div className="font-semibold">{nome} - {id.padStart(4, "0")}</div>
+            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
         },
     },
     {
@@ -27,7 +27,7 @@ export const columns = [
             const nome = paciente?.nome
             const id = paciente?.id || ""
 
-            return <div className="font-semibold">{nome} - {id.padStart(4, "0")}</div>
+            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
         }
     },
     {

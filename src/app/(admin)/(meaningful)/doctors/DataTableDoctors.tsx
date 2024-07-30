@@ -21,7 +21,7 @@ export const columns = [
         ),
         cell: ({ row }: { row: any }) => {
             const id = row.getValue("id")
-            return <div className="font-semibold">{id.padStart(4, "0")}</div>
+            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
         },
     },
     {
