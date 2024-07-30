@@ -6,6 +6,10 @@ import { LabeledSelect } from "@/components/widgets/LabeledSelect";
 import { LabeledTextArea } from "@/components/widgets/LabeledTextArea";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Medico } from "@/types/medico";
+import { MedicoDAO } from "@/api/MedicoDAO";
+import { PacienteDAO } from "@/api/PacienteDAO";
+import { Paciente } from "@/types/paciente";
 
 export default function Page() {
     const items = [
@@ -13,6 +17,10 @@ export default function Page() {
         { text: "Agendamentos médicos", link: "/patients" },
         { text: "Criar novo agendamento médico", link: "/patients/add" },
     ];
+
+    const medicos: Medico[] = MedicoDAO.getAll();
+    const pacientes: Paciente[] = PacienteDAO.getAll();
+
     return (<>
         <Breadcrumbs items={items} />
         <div>
@@ -39,19 +47,18 @@ export default function Page() {
                         <LabeledSelect
                             name="medico"
                             label="Médico"
-                            options={[
-                                { value: "1", label: "Dr. João da Silva" },
-                                { value: "2", label: "Dra. Maria da Silva" },
-                            ]}
+                            options={medicos.map((medico) => ({
+                                value: medico.id.toString() || '', label: `${medico.id.toString().padStart(4, "0")} - ${medico.nome}`
+                            }))}
                         />
 
                         <LabeledSelect
                             name="paciente"
                             label="Paciente"
-                            options={[
-                                { value: "1", label: "Maria da Silva" },
-                                { value: "2", label: "João da Silva" },
-                            ]}
+                            options={pacientes.map((paciente) => ({
+                                value: paciente.id.toString() || '', label: `${paciente.id.toString().padStart(4, "0")} - ${paciente.nome}`
+                            }) || [])
+                            }
                         />
 
                         <LabeledInput
