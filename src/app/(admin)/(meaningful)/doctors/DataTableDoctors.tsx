@@ -6,6 +6,16 @@ import ActionsCell from "@/components/widgets/DeleteAlert"
 
 export const columns = [
     {
+        accessorKey: "id",
+        header: ({ column }: { column: any }) => (
+            <DataTableColumnHeader column={column} title="ID" />
+        ),
+        cell: ({ row }: { row: any }) => {
+            const id = row.getValue("id")
+            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
+        },
+    },
+    {
         accessorKey: "nome",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Nome" />
@@ -13,16 +23,6 @@ export const columns = [
         cell: ({ row }: { row: any }) => {
             const name = row.getValue("nome")
             return <div className="w-60 font-semibold">{name}</div>
-        },
-    },
-    {
-        accessorKey: "id",
-        header: ({ column }: { column: any }) => (
-            <DataTableColumnHeader column={column} title="ID Médico" />
-        ),
-        cell: ({ row }: { row: any }) => {
-            const id = row.getValue("id")
-            return <div className="font-semibold">{String(id).padStart(4, "0")}</div>
         },
     },
     {
