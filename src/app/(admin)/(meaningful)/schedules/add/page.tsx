@@ -10,12 +10,15 @@ import { Medico } from "@/types/medico";
 import { MedicoDAO } from "@/api/MedicoDAO";
 import { PacienteDAO } from "@/api/PacienteDAO";
 import { Paciente } from "@/types/paciente";
+import { FormEvent } from "react";
+import { AgendamentoIn } from "@/types/agendamento";
+import { AgendamentoDAO } from "@/api/AgendamentoDAO";
 
 export default function Page() {
     const items = [
         { text: "Home", link: "/home" },
-        { text: "Agendamentos médicos", link: "/patients" },
-        { text: "Criar novo agendamento médico", link: "/patients/add" },
+        { text: "Agendamentos médicos", link: "/schedules" },
+        { text: "Criar novo agendamento médico", link: "/schedules/add" },
     ];
 
     const medicos: Medico[] = MedicoDAO.getAll();
@@ -23,8 +26,12 @@ export default function Page() {
 
     return (<>
         <Breadcrumbs items={items} />
-        <div>
-            <div className="flex justify-between items-center">
+        <form
+            id="form"
+            onSubmit={submitForm}
+        >
+            <div
+                className="flex justify-between items-center">
                 <div
                     id="text-header"
                     className="text-white py-4">
@@ -45,7 +52,7 @@ export default function Page() {
                         className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledSelect
-                            name="medico"
+                            name="medico_id"
                             label="Médico"
                             options={medicos.map((medico) => ({
                                 value: medico.id.toString() || '', label: `${medico.id.toString().padStart(4, "0")} - ${medico.nome}`
@@ -53,7 +60,7 @@ export default function Page() {
                         />
 
                         <LabeledSelect
-                            name="paciente"
+                            name="paciente_id"
                             label="Paciente"
                             options={pacientes.map((paciente) => ({
                                 value: paciente.id.toString() || '', label: `${paciente.id.toString().padStart(4, "0")} - ${paciente.nome}`
@@ -89,6 +96,12 @@ export default function Page() {
                             placeholder="Informe o local da consulta"
                         />
 
+                        <LabeledTextArea
+                            name="observacoes"
+                            label="Observações"
+                            placeholder="Informe observações adicionais"
+                        />
+
                     </div>
                     <Separator className="mt-4" />
                 </section>
@@ -99,7 +112,7 @@ export default function Page() {
                 <Button
                     className="w-full xl:w-auto xl:px-6"
                     variant={"cancel"}
-                    onClick={() => history.back()}
+                    onClick={() => window.location.href = "/schedules"}
                 >
                     Cancelar
                 </Button>
@@ -108,7 +121,6 @@ export default function Page() {
                     type="submit"
                     className="w-full xl:w-auto xl:px-12"
                     variant={"save"}
-                    onClick={() => alert("Paciente criado com sucesso!")}
                 >
                     Salvar
                 </Button>
@@ -116,7 +128,17 @@ export default function Page() {
             </div>
 
 
-        </div >
+        </form >
     </>
     );
+}
+
+function submitForm(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    const payload: AgendamentoIn = data as AgendamentoIn;
+    AgendamentoDAO.create(payload);
+    window.location.href = "/schedules";
+    
 }
