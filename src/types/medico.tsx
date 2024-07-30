@@ -1,5 +1,5 @@
 export type Medico = {
-    id? : string | null
+    id: string
     nome? : string | null
     conselho_medico?: string | null
     uf_conselho?: string | null
