@@ -47,18 +47,18 @@ export const columns = [
             <DataTableColumnHeader column={column} title="Data e hora" />
         ),
         cell: ({ row }: { row: any }) => {
-            const data = row.original.dataConsulta;
-            const hora = row.original.horaConsulta;
+            const data = row.original.data;
+            const hora = row.original.hora;
             return <div>{data} - {hora}</div>;
         },
         sortingFn: (rowA: any, rowB: any) => {
-            const dateA = new Date(`${rowA.original.dataConsulta}T${rowA.original.horaConsulta}`);
-            const dateB = new Date(`${rowB.original.dataConsulta}T${rowB.original.horaConsulta}`);
+            const dateA = new Date(`${rowA.original.data}T${rowA.original.hora}`);
+            const dateB = new Date(`${rowB.original.data}T${rowB.original.hora}`);
             return dateA.getTime() - dateB.getTime();
         }
     },
     {
-        accessorKey: "localConsulta",
+        accessorKey: "local",
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Local" />
         ),
