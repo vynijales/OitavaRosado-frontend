@@ -185,6 +185,7 @@ function submitForm(event: FormEvent<HTMLFormElement>) {
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
     const payload: MedicoIn = data as MedicoIn;
-    console.log(payload);
     MedicoDAO.create(payload);
+    window.location.href = "/doctors";
+
 }
