@@ -48,6 +48,10 @@ export const columns = [
         header: ({ column }: { column: any }) => (
             <DataTableColumnHeader column={column} title="Nascimento" />
         ),
+        cell: ({ row }: { row: any }) => {
+            const data_nascimento: Date = new Date(row.getValue("data_nascimento"));
+            return <div>{data_nascimento.toLocaleDateString("pt-BR")}</div>
+        },
     },
     {
         accessorKey: "observacoes",
