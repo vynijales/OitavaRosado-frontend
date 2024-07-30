@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "lucide-react";
 
-import { estados } from "@/utils/constants";
+import { estados, CBO, conselho } from "@/utils/constants";
+import { MedicoIn } from "@/types/medico";
+import { MedicoDAO } from "@/api/MedicoDAO";
+import { FormEvent } from "react";
 
 export default function Page() {
     const items = [
@@ -27,8 +30,9 @@ export default function Page() {
                     <h2 className="text-slate-200">Preencha os campos abaixo para criar um novo médico no sistema</h2>
                 </div>
             </div>
-            <div
-                id="container"
+            <form
+                id="form"
+                onSubmit={submitForm}
                 className="w-full h-full flex flex-col gap-8 bg-white p-8 rounded-lg shadow-md"
             >
 
@@ -49,13 +53,9 @@ export default function Page() {
                         />
 
                         <LabeledSelect
-                            name="conselho"
-                            label="Conselho"
-                            options={[
-                                { value: "CRM", label: "CRM" },
-                                { value: "CRO", label: "CRO" },
-                                { value: "CRF", label: "CRF" },
-                            ]}
+                            name="conselho_medico"
+                            label="Conselho_medico"
+                            options={conselho}
                         />
 
                         <LabeledSelect
@@ -74,11 +74,7 @@ export default function Page() {
                         <LabeledSelect
                             name="cbo"
                             label="CBO"
-                            options={[
-                                { value: "2251", label: "2251" },
-                                { value: "2252", label: "2252" },
-                                { value: "2253", label: "2253" },
-                            ]}
+                            options={CBO}
                         />
 
                         <LabeledInput
@@ -105,13 +101,6 @@ export default function Page() {
                             type="text"
                             placeholder="Informe o logradouro do médico"
                         />
-
-                        <LabeledInput
-                            name="num_casa"
-                            label="N° da residência"
-                            placeholder="Informe o número da residência do médico"
-                            type="text"
-                        />
                         
                         <LabeledInput
                             name="bairro"
@@ -125,11 +114,12 @@ export default function Page() {
                             placeholder="Informe a cidade do médico"
                         />
 
-                        <LabeledInput
-                            name="estado"
-                            type="text"
-                            placeholder="Informe o estado do médico"
+                        <LabeledSelect
+                            name="uf"
+                            label="Estados"
+                            options={estados}
                         />
+                        
                         <LabeledInput
                             name="cep"
                             type="text"
@@ -170,7 +160,7 @@ export default function Page() {
                     <Button
                         className="w-full xl:w-auto xl:px-6"
                         variant={"cancel"}
-                        onClick={() => history.back()}
+                        onClick={() => alert("Operação cancelada!")}
                     >
                         Cancelar
                     </Button>
@@ -178,14 +168,23 @@ export default function Page() {
                         type="submit"
                         className="w-full xl:w-auto xl:px-12"
                         variant={"save"}
-                        onClick={() => alert("Paciente criado com sucesso!")}
+                        // onClick={() => }
                     >
                         Salvar
                     </Button>
                 </div>
-            </div>
+            </form>
         </div>
     </>
     );
 
+}
+
+function submitForm(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    const payload: MedicoIn = data as MedicoIn;
+    console.log(payload);
+    MedicoDAO.create(payload);
 }
