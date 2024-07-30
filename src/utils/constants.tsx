@@ -27,3 +27,15 @@ export const estados = [
     {value: "SE", label: "SERGIPE"},
     {value: "TO", label: "TOCANTINS"},
 ]
+
+export const CBO = [
+    {value: "2251", label: "2251"},
+    {value: "2252", label: "2252"},
+    {value: "2253", label: "2253"},
+]
+
+export const conselho = [
+    {value: "CRM", label: "CRM"},
+    {value: "CRO", label: "CRO"},
+    {value: "CRF", label: "CRF"},
+]
