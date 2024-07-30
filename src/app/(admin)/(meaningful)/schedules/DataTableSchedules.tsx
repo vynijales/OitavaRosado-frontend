@@ -1,7 +1,8 @@
 "use client"
 
+import { AgendamentoDAO } from "@/api/AgendamentoDAO"
 import { DataTableColumnHeader } from "@/components/ui/DataTableColumnHeader"
-import { ActionsCell } from "@/components/ui/ActionsCell"
+import ActionsCell from "@/components/widgets/DeleteAlert"
 
 export const columns = [
     {
@@ -62,8 +63,10 @@ export const columns = [
         id: "actions",
         header: "Actions",
         cell: ({ row }: { row: any }) => {
-            const id = row.getValue("id")
-            return <ActionsCell row={row} />;
+            const id = row.getValue("id");
+            return <ActionsCell row={row} onDelete={() => {
+                AgendamentoDAO.delete(row.getValue("id"));
+            }} />;
         },
     },
 ]
