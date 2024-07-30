@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -28,14 +26,14 @@ export function LabeledSelect({ label, name, options, value, placeholder, classN
             setSelectedValue(value);
         }
     }, [value]);
-
+    
     const handleChange = (newValue: string) => {
         setSelectedValue(newValue);
         if (onChange) {
             onChange(newValue);
         }
     };
-
+        
     return (
         <div className={`relative ${className}`}>
             <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs font-bold bg-white">
@@ -51,6 +49,7 @@ export function LabeledSelect({ label, name, options, value, placeholder, classN
                     ))}
                 </SelectContent>
             </Select>
+            <input type="hidden" name={name} value={selectedValue} />
         </div>
     );
 }
