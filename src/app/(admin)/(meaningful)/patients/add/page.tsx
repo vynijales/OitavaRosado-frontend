@@ -181,7 +181,7 @@ export default function Page() {
                 <Button
                     className="w-full xl:w-auto xl:px-6"
                     variant={"cancel"}
-                    onClick={() => history.back()}
+                    onClick={() => window.location.href = "/patients"}
                 >
                     Cancelar
                 </Button>
@@ -207,4 +207,5 @@ function submitForm(event: FormEvent<HTMLFormElement>) {
     const data = Object.fromEntries(formData.entries());
     const payload: PacienteIn = data as PacienteIn;
     PacienteDAO.create(payload);
+    window.location.href = "/patients";
 }
