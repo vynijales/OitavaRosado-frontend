@@ -38,7 +38,7 @@ export default class APIConsumer<Tin, Tout> {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-        }).then((response) => response.json());
+        });
     }
 
     update(id: string, data: Tin) {

@@ -7,6 +7,9 @@ import { LabeledTextArea } from "@/components/widgets/LabeledTextArea";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "lucide-react";
+import { FormEvent } from "react";
+import { PacienteDAO } from "@/api/PacienteDAO";
+import { PacienteIn } from "@/types/paciente";
 
 export default function Page() {
     const items = [
@@ -16,7 +19,10 @@ export default function Page() {
     ];
     return (<>
         <Breadcrumbs items={items} />
-        <div>
+        <form
+            id="form"
+            onSubmit={(e) => submitForm(e)}   
+        >
             <div className="flex justify-between items-center">
                 <div
                     id="text-header"
@@ -104,7 +110,6 @@ export default function Page() {
                             type="text"
                             placeholder="Informe o bairro do paciente"
                         />
-
                         <LabeledInput
                             name="cidade"
                             label="Cidade"
@@ -117,7 +122,6 @@ export default function Page() {
                             type="text"
                             placeholder="Informe o estado do paciente"
                         />
-
                         <LabeledInput
                             name="cep"
                             label="CEP"
@@ -143,12 +147,6 @@ export default function Page() {
                             label="Telefone"
                             type="text"
                             placeholder="Informe o telefone do paciente"
-                        />
-                        <LabeledInput
-                            name="celular"
-                            label="Celular"
-                            type="text"
-                            placeholder="Informe o celular do paciente"
                         />
                         <LabeledInput
                             name="email"
@@ -192,15 +190,21 @@ export default function Page() {
                     type="submit"
                     className="w-full xl:w-auto xl:px-12"
                     variant={"save"}
-                    onClick={() => alert("Paciente criado com sucesso!")}
+                    onClick={() => submitForm}
                 >
                     Salvar
                 </Button>
 
             </div>
-
-
-        </div >
+        </form >
     </>
     );
+}
+
+function submitForm(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    const payload: PacienteIn = data as PacienteIn;
+    PacienteDAO.create(payload);
 }
