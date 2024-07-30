@@ -48,12 +48,12 @@ export default class APIConsumer<Tin, Tout> {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
-        }).then((response) => response.json());
+        });
     }
 
     delete(id: string) {
         return fetch(`${this.endpoint}/${id}`, {
             method: "DELETE",
-        }).then((response) => response.json());
+        });
     }
 }
