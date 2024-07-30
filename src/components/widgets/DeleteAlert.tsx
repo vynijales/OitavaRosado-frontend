@@ -26,9 +26,7 @@ function ActionsCell({ row, onDelete }: ActionsCellProps) {
     if (onDelete) {
       onDelete();
     } else {
-      console.log('Dados excluídos');
-      alert("Item deleted");
-      window.location.reload();
+      alert("Deleted not implemented");
     }
     setIsAlertOpen(false);
   };
