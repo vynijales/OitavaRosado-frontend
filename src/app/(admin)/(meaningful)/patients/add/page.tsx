@@ -80,7 +80,7 @@ export default function Page() {
                             placeholder="Informe o RG do paciente"
                         />
                         <LabeledInput
-                            name="orgao"
+                            name="orgao_emissor"
                             label="Órgão Emissor"
                             type="text"
                             placeholder="Informe o órgão emissor do RG do paciente"
@@ -99,7 +99,7 @@ export default function Page() {
                         className="grid grid-cols-1 xl:grid-cols-3 justify-between gap-7"
                     >
                         <LabeledInput
-                            name="lagradouro"
+                            name="logradouro"
                             label="Logradouro"
                             type="text"
                             placeholder="Informe o logradouro do paciente"
@@ -174,7 +174,7 @@ export default function Page() {
                         />
                     </div>
                 </section>
-            </div >
+            </div>
             <div
                 className="flex justify-end items-center gap-8 mt-8"
             >
