@@ -9,18 +9,6 @@ export default class APIConsumer<Tin, Tout> {
         this.endpoint = apiURL + endpoint;
     }
 
-    get(id: string) {
-        const [data, setData] = useState<Tout | null>(null);
-        useEffect(() => {
-            fetch(`${this.endpoint}/${id}`)
-                .then((response) => response.json())
-                .then((data) => setData(data));
-        }, []);
-
-        console.log(`${this.endpoint}/${id} => ${data}`);
-        return data as Tout;
-    }
-
     getAll(): Tout[] {
         const [data, setData] = useState<Tout[]>([]);
         useEffect(() => {
@@ -29,6 +17,16 @@ export default class APIConsumer<Tin, Tout> {
                 .then((data) => setData(data));
         }, []);
         return data;
+    }
+
+    get(id: string): Tout {
+        const [data, setData] = useState<Tout>();
+        useEffect(() => {
+            fetch(`${this.endpoint}/${id}`)
+                .then((response) => response.json())
+                .then((data) => setData(data));
+        }, [id]);
+        return data as Tout;
     }
 
     create(data: Tin) {
