@@ -2,12 +2,37 @@
 
 import Link from "next/link";
 import Input from "@/components/form/Input";
+import { FormEvent, useState } from "react";
+import { UsuarioDAO } from "@/api/UsuarioDAO";
+import { Usuario } from "@/types/usuario";
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const usuarios: Usuario[] = UsuarioDAO.getAll();
+
+
+    function submitForm(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+
+        const formData = new FormData(event.currentTarget);
+
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+
+        if (usuarios.some(usuario => usuario.login === email && usuario.password === password)) {
+            alert("Login efetuado com sucesso!");
+            window.location.href = "/home";
+        } else {
+            alert("Credenciais inválidas!");
+        }
+    }
+
     return (
         <form
             id="form"
             className="w-full h-full flex flex-col gap-8 justify-around"
+            onSubmit={submitForm}
         >
             <div
                 id="form-header"
@@ -24,7 +49,8 @@ export default function Login() {
                     label="E-mail"
                     type="email"
                     name="email"
-                    value=""
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required={true}
                 />
 
@@ -32,10 +58,10 @@ export default function Login() {
                     label="Senha"
                     type="password"
                     name="password"
-                    value=""
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required={true}
                 />
-
 
                 <div
                     id="form-checkbox"
@@ -53,7 +79,6 @@ export default function Login() {
                         Deixar-me conectado
                     </label>
                 </div>
-
             </div>
             <div
                 id="form-buttons"
@@ -68,12 +93,11 @@ export default function Login() {
                 </button>
                 <Link
                     href="/forgot-password"
-                    className=" text-primary hover:opacity-90 text-xl mt-2"
+                    className="text-primary hover:opacity-90 text-xl mt-2"
                 >
                     Esqueceu a senha?
                 </Link>
             </div>
-
         </form>
-    )
+    );
 }
