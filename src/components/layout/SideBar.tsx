@@ -68,7 +68,7 @@ export default function SideBar() {
                         expanded={expanded}
                     />
                     <NavLink
-                        path="/"
+                        path="/login"
                         icon={faRightFromBracket}
                         text="Sair"
                         currentPath={currentPath}
