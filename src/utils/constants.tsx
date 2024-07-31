@@ -39,3 +39,8 @@ export const conselho = [
     {value: "CRO", label: "CRO"},
     {value: "CRF", label: "CRF"},
 ]
+
+export const sexo = [
+    {value: "M", label: "Masculino"},
+    {value: "F", label: "Feminino"},
+]

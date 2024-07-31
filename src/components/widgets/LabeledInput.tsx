@@ -8,15 +8,16 @@ interface LabeledInputProps {
     placeholder?: string;
     className?: string;
     value?: string;
+    defaultValue?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function LabeledInput({ label, name, type, placeholder, className, value, onChange }: LabeledInputProps) {
+export function LabeledInput({ label, name, type, placeholder, className, value, defaultValue, onChange }: LabeledInputProps) {
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
     return (
         <div className={`relative ${className}`}>
             <Label htmlFor={name} className="absolute translate-x-2 -translate-y-2 z-[2] text-xs font-bold bg-white">
-                { label ? label : nameCapitalized }
+                {label ? label : nameCapitalized}
             </Label>
             <Input
                 type={type}
@@ -25,6 +26,7 @@ export function LabeledInput({ label, name, type, placeholder, className, value,
                 placeholder={placeholder ? placeholder : nameCapitalized}
                 value={value}
                 onChange={onChange}
+                defaultValue={defaultValue}
             />
         </div>
     );

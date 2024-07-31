@@ -8,10 +8,10 @@ interface LabeledTextAreaProps {
     className?: string;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    defaultValue?: string;
 }
 
-
-export function LabeledTextArea({ label, name, placeholder, className, value, onChange }: LabeledTextAreaProps) {
+function LabeledTextArea({ label, name, placeholder, className, value, onChange, defaultValue }: LabeledTextAreaProps) {
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
     return (
         <div className={`relative ${className}`}>
@@ -24,7 +24,10 @@ export function LabeledTextArea({ label, name, placeholder, className, value, on
                 placeholder={placeholder ? placeholder : nameCapitalized}
                 value={value}
                 onChange={onChange}
+                defaultValue={defaultValue}
             />
         </div>
     );
 }
+
+export { LabeledTextArea };
