@@ -231,8 +231,7 @@ export default function Page({ params }: {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData) as PacienteIn;
         PacienteDAO.update(parseInt(params.id).toString(), data);
-        // window.location.href = "/patients";
-        console.log(data);
+        window.location.href = "/patients";
     }
 }
 
