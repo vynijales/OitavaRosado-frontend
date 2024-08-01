@@ -3,29 +3,26 @@
 import Link from "next/link";
 import Input from "@/components/form/Input";
 import { FormEvent, useState } from "react";
-import { UsuarioDAO } from "@/api/UsuarioDAO";
-import { Usuario } from "@/types/usuario";
+import UsuarioDAO from "@/api/UsuarioDAO";
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const usuarios: Usuario[] = UsuarioDAO.getAll();
-
-
     function submitForm(event: FormEvent<HTMLFormElement>): void {
-        event.preventDefault(); // Previne o comportamento padrão do formulário
+        event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
 
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
 
-        if (usuarios.some(usuario => usuario.login === email && usuario.password === password)) {
-            alert("Login efetuado com sucesso!");
-            window.location.href = "/home";
-        } else {
-            alert("Credenciais inválidas!");
-        }
+        UsuarioDAO.isAuthorized(email, password)
+            .then(isAuthorized => {
+                if (!isAuthorized) {
+                    alert("Credenciais inválidas. Por favor, tente novamente.");
+                } else {
+                    alert("Login efetuado com sucesso!");
+                    window.location.href = "/home";
+                }
+            });
     }
 
     return (
@@ -49,18 +46,16 @@ export default function Login() {
                     label="E-mail"
                     type="email"
                     name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     required={true}
+                    value={""}
                 />
 
                 <Input
                     label="Senha"
                     type="password"
                     name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                     required={true}
+                    value={""}
                 />
 
                 <div
